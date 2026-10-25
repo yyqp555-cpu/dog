@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17151a">
+<meta name="description" content="متجر الأميرة بيسان والكلبة لوسي لمنتجات الحيوانات الأليفة">
+<title>الأميرة بيسان والكلبة لوسي</title>
+
+<style>
+:root {
+  --pink:#d72f70;
+  --pink2:#f6a5c1;
+  --light:#fff4f7;
+  --dark:#19171c;
+  --green:#119b58;
+  --text:#302630;
+  --muted:#777078;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#fffafb;
+  color:var(--text);
+}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{
+  background:var(--dark);
+  color:white;
+  padding:13px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.brand{
+  font-size:20px;
+  font-weight:bold;
+  color:#ff8eb7;
+  line-height:1.7;
+}
+.brand small{
+  display:block;
+  font-size:12px;
+  color:white;
+  font-weight:normal;
+}
+.nav{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  align-items:center;
+  font-size:14px;
+}
+.nav a:hover{color:#ff8eb7}
+.header-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:7px;
+  border:0;
+  border-radius:25px;
+  padding:11px 17px;
+  font-weight:bold;
+  transition:.2s;
+}
+.btn:hover{filter:brightness(.95);transform:translateY(-1px)}
+.btn-pink{background:var(--pink);color:white}
+.btn-green{background:var(--green);color:white}
+.btn-dark{background:var(--dark);color:white}
+.btn-light{background:white;color:var(--pink)}
+.hero{
+  padding:45px 6%;
+  background:linear-gradient(120deg,#ffe0eb,#fff4f6 60%,#fbd0df);
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:25px;
+  align-items:center;
+  overflow:hidden;
+}
+.hero h1{
+  font-size:clamp(30px,5vw,55px);
+  color:#b9215d;
+  line-height:1.5;
+  margin:0 0 10px;
+}
+.hero p{line-height:2;color:#51414b}
+.hero-image{
+  width:100%;
+  max-height:360px;
+  object-fit:cover;
+  border-radius:28px;
+  box-shadow:0 12px 35px #a82b5020;
+  background:#f7d9e2;
+}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.section{padding:35px 5%}
+.section-title{text-align:center;margin-bottom:25px}
+.section-title h2{font-size:27px;margin:0 0 10px}
+.section-title p{color:var(--muted);line-height:1.8;margin:0}
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  padding:20px 5%;
+}
+.feature{
+  background:#fff0f5;
+  padding:18px 10px;
+  border-radius:16px;
+  text-align:center;
+}
+.feature .emoji{font-size:27px}
+.feature h3{font-size:15px;margin:9px 0 5px}
+.feature p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}
+.categories{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-bottom:20px;
+}
+.cat{
+  border:1px solid #f0cad8;
+  background:white;
+  color:#633348;
+  border-radius:25px;
+  padding:10px 15px;
+}
+.cat.active,.cat:hover{
+  background:var(--pink);
+  color:white;
+  border-color:var(--pink);
+}
+.tools{
+  display:flex;
+  gap:10px;
+  margin:0 auto 22px;
+  max-width:850px;
+}
+.tools input,.tools select{
+  border:1px solid #e8dce2;
+  border-radius:12px;
+  background:white;
+  padding:12px;
+  min-width:0;
+}
+.tools input{flex:1}
+.tools select{max-width:160px}
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:17px;
+}
+.card{
+  background:white;
+  border:1px solid #f1e5ea;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 15px #38212c09;
+  display:flex;
+  flex-direction:column;
+}
+.product-image{
+  height:175px;
+  width:100%;
+  object-fit:cover;
+  background:#f8e8ed;
+}
+.details{padding:13px;display:flex;flex-direction:column;flex:1}
+.details h3{font-size:15px;margin:0 0 8px}
+.desc{font-size:12px;color:var(--muted);line-height:1.8;flex:1}
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:5px;
+  margin:12px 0;
+}
+.price{font-size:18px;color:var(--pink);font-weight:bold}
+.tag{font-size:10px;background:#fff0f5;color:#a32154;padding:5px 7px;border-radius:8px}
+.card-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.card-buttons button{padding:10px 5px;font-size:12px;border-radius:9px}
+.add{background:#fff0f5;color:#b51d58;border:1px solid #f4d3df}
+.buy{background:var(--green);color:white;border:0}
+.empty{text-align:center;grid-column:1/-1;padding:35px;color:var(--muted)}
+.banner{
+  margin:10px 5% 35px;
+  padding:28px;
+  border-radius:22px;
+  background:linear-gradient(120deg,#ffe2ec,#fff4f6);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.banner h2{margin-top:0}
+.banner p{line-height:1.9;color:#6e5c65}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.contact-box{
+  border:1px solid #f0e1e7;
+  border-radius:18px;
+  padding:22px;
+  background:white;
+}
+.contact-box p{line-height:1.9;color:var(--muted)}
+.contact-buttons{display:flex;gap:10px;flex-wrap:wrap}
+footer{
+  background:var(--dark);
+  color:white;
+  padding:30px 5%;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:25px;
+}
+footer p,footer a{font-size:13px;color:#ddd;line-height:2}
+footer h3{color:#ff8eb7}
+.copyright{
+  border-top:1px solid #49414a;
+  padding-top:17px;
+  margin-top:20px;
+  text-align:center;
+  font-size:12px;
+  color:#cfc6ce;
+}
+.cart-count{
+  background:var(--pink);
+  border-radius:50%;
+  padding:3px 7px;
+  font-size:12px;
+}
+.cart-panel{
+  position:fixed;
+  z-index:20;
+  left:12px;
+  bottom:12px;
+  width:min(390px,calc(100% - 24px));
+  max-height:75vh;
+  overflow:auto;
+  background:white;
+  border:1px solid #f0dce5;
+  box-shadow:0 5px 35px #0002;
+  border-radius:18px;
+  padding:18px;
+  display:none;
+}
+.cart-panel.open{display:block}
+.cart-head{display:flex;justify-content:space-between;align-items:center}
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #f2e8ed;
+  padding:12px 0;
+}
+.cart-item small{color:var(--muted)}
+.qty{display:flex;gap:8px;align-items:center}
+.qty button{
+  border:0;background:#fff0f5;border-radius:7px;
+  padding:5px 9px;color:#a32154
+}
+.cart-total{font-weight:bold;font-size:18px;margin:15px 0}
+.cart-empty{text-align:center;color:var(--muted);padding:15px}
+.notice{font-size:12px;color:var(--muted);line-height:1.8}
+@media(max-width:850px){
+  .products{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .nav{gap:10px}
+}
+@media(max-width:600px){
+  .topbar{padding:13px 4%}
+  .nav{width:100%;justify-content:center;padding:7px 0}
+  .hero{grid-template-columns:1fr;padding:30px 5%;text-align:center}
+  .hero-image{max-height:245px;grid-row:1}
+  .hero-actions{justify-content:center}
+  .features{grid-template-columns:repeat(2,1fr);padding:15px 4%}
+  .section{padding:28px 4%}
+  .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .product-image{height:135px}
+  .details{padding:10px}
+  .details h3{font-size:13px}
+  .price{font-size:15px}
+  .card-buttons button{font-size:11px}
+  .tools{flex-wrap:wrap}
+  .tools input{width:100%;flex-basis:100%}
+  .tools select{max-width:none;flex:1}
+  .contact-grid,.footer-grid{grid-template-columns:1fr}
+  .banner{margin:5px 4% 25px;padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- إعدادات المتجر: عدّل الاسم ورقم الهاتف من هنا -->
+<script>
+const CONFIG = {
+  name: "الأميرة بيسان والكلبة لوسي",
+  whatsapp: "905XXXXXXXXX",
+  phone: "905XXXXXXXXX",
+  currency: "دولار",
+  instagram: "",
+  address: "نستقبل الطلبات عبر واتساب"
+};
+</script>
+
+<header class="topbar">
+  <a class="brand" href="#home">
+    👑 الأميرة بيسان
+    <small>🐾 والكلبة لوسي</small>
+  </a>
+
+  <nav class="nav">
+    <a href="#home">الرئيسية</a>
+    <a href="#categories">الأقسام</a>
+    <a href="#products-section">المنتجات</a>
+    <a href="#about">من نحن</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="btn btn-light" onclick="toggleCart()">
+      🛒 السلة <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <a class="btn btn-green" id="headerWhatsApp" href="#">واتساب</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <h1>الأميرة بيسان<br>والكلبة لوسي 🐾</h1>
+    <p>
+      كل ما تحتاجه حيواناتك الأليفة من منتجات وعناية وألعاب.
+      اختيارات جميلة لأصدقائنا الصغار، وطلبات سهلة عبر واتساب.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-pink" href="#products-section">🛍️ تسوق الآن</a>
+      <a class="btn btn-green" id="heroWhatsApp" href="#">تواصل عبر واتساب</a>
+    </div>
+  </div>
+  <img class="hero-image"
+    src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85"
+    alt="كلب أليف لطيف">
+</section>
+
+<section class="features" id="about">
+  <div class="feature">
+    <div class="emoji">🚚</div>
+    <h3>توصيل حسب الاتفاق</h3>
+    <p>اسألنا عن مناطق التوصيل والتكلفة.</p>
+  </div>
+  <div class="feature">
+    <div class="emoji">💗</div>
+    <h3>منتجات متنوعة</h3>
+    <p>خيارات للأكل واللعب والعناية.</p>
+  </div>
+  <div class="feature">
+    <div class="emoji">💬</div>
+    <h3>طلب سهل</h3>
+    <p>أرسل طلبك مباشرة عبر واتساب.</p>
+  </div>
+  <div class="feature">
+    <div class="emoji">🐾</div>
+    <h3>نهتم بأصدقائنا</h3>
+    <p>اختر ما يناسب حيوانك الأليف.</p>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="section-title">
+    <h2>تسوق حسب القسم 🐾</h2>
+    <p>اختر القسم لتجد المنتجات التي تبحث عنها.</p>
+  </div>
+  <div class="categories" id="categoryButtons"></div>
+</section>
+
+<section class="section" id="products-section">
+  <div class="section-title">
+    <h2>منتجاتنا المميزة 💕</h2>
+    <p>تصفح المنتجات، أضفها إلى السلة، أو اطلب مباشرة عبر واتساب.</p>
+  </div>
+
+  <div class="tools">
+    <input id="searchInput" type="search"
+      placeholder="🔍 ابحث عن منتج..."
+      aria-label="ابحث عن منتج">
+    <select id="sortSelect" aria-label="ترتيب المنتجات">
+      <option value="default">الترتيب الافتراضي</option>
+      <option value="low">السعر: من الأقل</option>
+      <option value="high">السعر: من الأعلى</option>
+      <option value="name">الاسم: أبجدي</option>
+    </select>
+  </div>
+
+  <div class="products" id="products"></div>
+  <p class="notice">الأسعار والصور المعروضة تجريبية. عدّلها قبل نشر المتجر للبيع.</p>
+</section>
+
+<section class="banner">
+  <div>
+    <h2>لأن أصدقاءنا يستحقون الأفضل 🐶</h2>
+    <p>هل تبحث عن منتج محدد أو تريد الاستفسار عن المقاسات والأسعار؟<br>
+    تواصل معنا وسنساعدك في اختيار المنتج المناسب.</p>
+  </div>
+  <a class="btn btn-green" id="bannerWhatsApp" href="#">تحدث معنا الآن</a>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-title">
+    <h2>تواصل معنا 📞</h2>
+    <p>نحن هنا للإجابة عن استفساراتك بخصوص المنتجات والطلبات.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-box">
+      <h3>💬 التواصل عبر واتساب</h3>
+      <p>أرسل لنا اسم المنتج الذي تريده واستفسر عن توفره وسعره.</p>
+      <div class="contact-buttons">
+        <a class="btn btn-green" id="contactWhatsApp" href="#">افتح واتساب</a>
+      </div>
+    </div>
+    <div class="contact-box">
+      <h3>☎️ الاتصال الهاتفي</h3>
+      <p>يمكنك الاتصال بصاحب المتجر مباشرة بعد إضافة رقم الهاتف الصحيح.</p>
+      <div class="contact-buttons">
+        <a class="btn btn-pink" id="phoneLink" href="#">اتصل الآن</a>
+      </div>
+      <p id="phoneText"></p>
+      <p id="addressText"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 id="footerBrand">👑 الأميرة بيسان والكلبة لوسي</h3>
+      <p>متجر يهتم باحتياجات الحيوانات الأليفة، من المنتجات اليومية إلى الألعاب والعناية.</p>
+    </div>
+    <div>
+      <h3>روابط سريعة</h3>
+      <p><a href="#home">الرئيسية</a></p>
+      <p><a href="#products-section">المنتجات</a></p>
+      <p><a href="#contact">تواصل معنا</a></p>
+    </div>
+    <div>
+      <h3>خدمة العملاء</h3>
+      <p>الطلبات والاستفسارات عبر واتساب.</p>
+      <p><a id="footerWhatsApp" href="#">راسلنا الآن</a></p>
+      <p><a id="instagramLink" href="#" hidden>إنستغرام</a></p>
+    </div>
+  </div>
+  <div class="copyright">
+    © <span id="year"></span> الأميرة بيسان والكلبة لوسي — جميع الحقوق محفوظة
+  </div>
+</footer>
+
+<!-- سلة المشتريات -->
+<aside class="cart-panel" id="cartPanel" aria-label="سلة المشتريات">
+  <div class="cart-head">
+    <h3>🛒 سلة مشترياتك</h3>
+    <button class="btn btn-pink" onclick="toggleCart()">إغلاق ✕</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total" id="cartTotal">المجموع: 0</div>
+  <button class="btn btn-green" style="width:100%"
+    onclick="checkout()">إرسال الطلب عبر واتساب</button>
+  <p class="notice">إرسال الطلب لا يعني الدفع الإلكتروني. اتفق مع المتجر على الدفع والتوصيل.</p>
+</aside>
+
+<script>
+// ===========================================
+// إعدادات المنتجات
+// السعر رقم، والعملة محددة في CONFIG
+// يمكنك تعديل الاسم والوصف والصورة والسعر.
+// ===========================================
+
+const productsData = [
+  {
+    id:1, name:"طعام جاف للكلاب", category:"الطعام",
+    price:15, description:"طعام يومي للحيوانات الأليفة.",
+    image:"https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=80",
+    tag:"الأكثر طلباً"
+  },
+  {
+    id:2, name:"وعاء طعام", category:"الطعام",
+    price:8, description:"وعاء لتقديم الطعام والماء.",
+    image:"https://images.unsplash.com/photo-1582798358481-d199fb7347bb?auto=format&fit=crop&w=600&q=80",
+    tag:"عملي"
+  },
+  {
+    id:3, name:"طوق أنيق", category:"الأطواق",
+    price:12, description:"طوق للحيوانات الأليفة بمظهر جميل.",
+    image:"https://images.unsplash.com/photo-1601758123927-1964b8f4f2e8?auto=format&fit=crop&w=600&q=80",
+    tag:"مميز"
+  },
+  {
+    id:4, name:"لعبة للحيوانات", category:"الألعاب",
+    price:8, description:"لعبة للتسلية والنشاط.",
+    image:"https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=600&q=80",
+    tag:"للتسلية"
+  },
+  {
+    id:5, name:"سرير مريح", category:"الأسرّة",
+    price:25, description:"مكان مريح للاسترخاء والنوم.",
+    image:"https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=600&q=80",
+    tag:"راحة"
+  },
+  {
+    id:6, name:"فرشاة عناية", category:"العناية",
+    price:9, description:"فرشاة للمساعدة في تمشيط الفرو.",
+    image:"https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=600&q=80",
+    tag:"عناية"
+  },
+  {
+    id:7, name:"شامبو للحيوانات", category:"العناية",
+    price:14, description:"اختر شامبو مخصصاً لنوع حيوانك.",
+    image:"https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=600&q=80",
+    tag:"نظافة"
+  },
+  {
+    id:8, name:"ملابس للحيوانات", category:"الملابس",
+    price:18, description:"ملابس بأحجام مختلفة حسب التوفر.",
+    image:"https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=600&q=80",
+    tag:"أنيق"
+  },
+  {
+    id:9, name:"حقيبة نقل", category:"الإكسسوارات",
+    price:32, description:"حقيبة لحمل الحيوان حسب المقاس.",
+    image:"https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80",
+    tag:"للتنقل"
+  },
+  {
+    id:10, name:"كرة لعب", category:"الألعاب",
+    price:5, description:"لعبة بسيطة للمرح والنشاط.",
+    image:"https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=600&q=80",
+    tag:"اقتصادي"
+  },
+  {
+    id:11, name:"حزام للمشي", category:"الأطواق",
+    price:13, description:"حزام للمشي مع حيوانك الأليف.",
+    image:"https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=600&q=80",
+    tag:"للمشي"
+  },
+  {
+    id:12, name:"بطانية ناعمة", category:"الأسرّة",
+    price:16, description:"بطانية مريحة لوقت الراحة.",
+    image:"https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=600&q=80",
+    tag:"ناعم"
+  },
+  {
+    id:13, name:"وجبات مكافأة", category:"الطعام",
+    price:7, description:"مكافآت مخصصة للحيوانات حسب النوع.",
+    image:"https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=80",
+    tag:"مكافأة"
+  },
+  {
+    id:14, name:"إكسسوار لطيف", category:"الإكسسوارات",
+    price:6, description:"إضافة جميلة لإطلالة حيوانك.",
+    image:"https://images.unsplash.com/photo-1601758123927-1964b8f4f2e8?auto=format&fit=crop&w=600&q=80",
+    tag:"هدية"
+  },
+  {
+    id:15, name:"لعبة حبل", category:"الألعاب",
+    price:6, description:"لعبة تفاعلية للحيوانات المناسبة لها.",
+    image:"https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=600&q=80",
+    tag:"تفاعلي"
+  },
+  {
+    id:16, name:"مستلزمات النظافة", category:"العناية",
+    price:11, description:"مستلزمات تنظيف حسب احتياجات الحيوان.",
+    image:"https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=600&q=80",
+    tag:"مفيد"
+  }
+];
+
+let selectedCategory = "الكل";
+let cart = [];
+
+function normalizePhone(number) {
+  return String(number || "").replace(/\D/g, "");
+}
+
+function validWhatsApp() {
+  const n = normalizePhone(CONFIG.whatsapp);
+  return /^\d{10,15}$/.test(n) && !/^0+$/.test(n);
+}
+
+function validPhone() {
+  const n = normalizePhone(CONFIG.phone);
+  return /^\d{7,15}$/.test(n) && !/^0+$/.test(n);
+}
+
+function waUrl(message = "") {
+  if (!validWhatsApp()) {
+    alert("يرجى تعديل رقم واتساب في قسم CONFIG أعلى الكود.");
+    return null;
+  }
+  return "https://wa.me/" + normalizePhone(CONFIG.whatsapp) +
+    (message ? "?text=" + encodeURIComponent(message) : "");
+}
+
+function openWA(message = "") {
+  const url = waUrl(message);
+  if (url) window.open(url, "_blank", "noopener");
+}
+
+function money(price) {
+  return Number(price).toLocaleString("ar") + " " + CONFIG.currency;
+}
+
+function setContactLinks() {
+  document.title = CONFIG.name;
+  document.getElementById("footerBrand").textContent = CONFIG.name;
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("addressText").textContent = CONFIG.address || "";
+
+  ["headerWhatsApp","heroWhatsApp","bannerWhatsApp",
+   "contactWhatsApp","footerWhatsApp"].forEach(id => {
+    const el = document.getElementById(id);
+    el.href = "#contact";
+    el.addEventListener("click", function(e) {
+      e.preventDefault();
+      openWA("مرحباً، أريد الاستفسار عن منتجات " + CONFIG.name);
+    });
+  });
+
+  const phoneLink = document.getElementById("phoneLink");
+  if (validPhone()) {
+    phoneLink.href = "tel:+" + normalizePhone(CONFIG.phone);
+    document.getElementById("phoneText").textContent =
+      "رقم الهاتف: +" + normalizePhone(CONFIG.phone);
+  } else {
+    phoneLink.href = "#contact";
+    phoneLink.addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("يرجى وضع رقم الهاتف الصحيح في قسم CONFIG أعلى الكود.");
+    });
+    document.getElementById("phoneText").textContent =
+      "أضف رقم الهاتف في إعدادات المتجر ليظهر هنا.";
+  }
+
+  if (CONFIG.instagram) {
+    const link = document.getElementById("instagramLink");
+    link.href = CONFIG.instagram;
+    link.hidden = false;
+    link.target = "_blank";
+    link.rel = "noopener";
+  }
+}
+
+function renderCategories() {
+  const categories = ["الكل", ...new Set(productsData.map(p => p.category))];
+  const box = document.getElementById("categoryButtons");
+  box.replaceChildren();
+
+  categories.forEach(category => {
+    const button = document.createElement("button");
+    button.className = "cat" + (category === selectedCategory ? " active" : "");
+    button.textContent = category === "الكل" ? "🐾 جميع المنتجات" : category;
+    button.addEventListener("click", () => {
+      selectedCategory = category;
+      renderCategories();
+      renderProducts();
+    });
+    box.appendChild(button);
+  });
+}
+
+function renderProducts() {
+  const box = document.getElementById("products");
+  box.replaceChildren();
+
+  const query = document.getElementById("searchInput").value.trim().toLowerCase();
+  const sort = document.getElementById("sortSelect").value;
+
+  let list = productsData.filter(p =>
+    (selectedCategory === "الكل" || p.category === selectedCategory) &&
+    (p.name.toLowerCase().includes(query) ||
+     p.description.toLowerCase().includes(query) ||
+     p.category.toLowerCase().includes(query))
+  );
+
+  if (sort === "low") list.sort((a,b) => a.price-b.price);
+  if (sort === "high") list.sort((a,b) => b.price-a.price);
+  if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name,"ar"));
+
+  if (!list.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "لم نجد منتجات مطابقة لبحثك.";
+    box.appendChild(empty);
+    return;
+  }
+
+  list.forEach(p => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const img = document.createElement("img");
+    img.className = "product-image";
+    img.src = p.image;
+    img.alt = p.name;
+    img.loading = "lazy";
+    img.onerror = () => {
+      img.style.display = "none";
+    };
+
+    const details = document.createElement("div");
+    details.className = "details";
+
+    const title = document.createElement("h3");
+    title.textContent = p.name;
+
+    const desc = document.createElement("div");
+    desc.className = "desc";
+    desc.textContent = p.description;
+
+    const row = document.createElement("div");
+    row.className = "price-row";
+
+    const price = document.createElement("span");
+    price.className = "price";
+    price.textContent = money(p.price);
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = p.tag || p.category;
+    row.append(price, tag);
+
+    const buttons = document.createElement("div");
+    buttons.className = "card-buttons";
+
+    const add = document.createElement("button");
+    add.className = "add";
+    add.textContent = "🛒 أضف للسلة";
+    add.addEventListener("click", () => addToCart(p.id));
+
+    const buy = document.createElement("button");
+    buy.className = "buy";
+    buy.textContent = "واتساب";
+    buy.addEventListener("click", () => {
+      openWA("مرحباً، أريد طلب المنتج التالي من " + CONFIG.name +
+        "\nالمنتج: " + p.name +
+        "\nالسعر: " + money(p.price) +
+        "\nهل المنتج متوفر؟");
+    });
+
+    buttons.append(add,buy);
+    details.append(title,desc,row,buttons);
+    card.append(img,details);
+    box.appendChild(card);
+  });
+}
+
+function addToCart(id) {
+  const product = productsData.find(p => p.id === id);
+  if (!product) return;
+  const item = cart.find(i => i.id === id);
+  if (item) item.qty++;
+  else cart.push({...product,qty:1});
+  renderCart();
+}
+
+function changeQty(id, amount) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += amount;
+  if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+  renderCart();
+}
+
+function renderCart() {
+  document.getElementById("cartCount").textContent =
+    cart.reduce((sum,item) => sum + item.qty, 0);
+
+  const box = document.getElementById("cartItems");
+  box.replaceChildren();
+
+  if (!cart.length) {
+    const empty = document.createElement("div");
+    empty.className = "cart-empty";
+    empty.textContent = "السلة فارغة. أضف بعض المنتجات أولاً 🐾";
+    box.appendChild(empty);
+  }
+
+  cart.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    const info = document.createElement("div");
+    const title = document.createElement("strong");
+    title.textContent = item.name;
+
+    const sub = document.createElement("small");
+    sub.textContent = "\n" + money(item.price) + " للقطعة";
+
+    info.append(title,sub);
+
+    const qty = document.createElement("div");
+    qty.className = "qty";
+
+    const minus = document.createElement("button");
+    minus.textContent = "−";
+    minus.setAttribute("aria-label","تقليل الكمية");
+    minus.onclick = () => changeQty(item.id,-1);
+
+    const number = document.createElement("span");
+    number.textContent = item.qty;
+
+    const plus = document.createElement("button");
+    plus.textContent = "+";
+    plus.setAttribute("aria-label","زيادة الكمية");
+    plus.onclick = () => changeQty(item.id,1);
+
+    qty.append(minus,number,plus);
+    row.append(info,qty);
+    box.appendChild(row);
+  });
+
+  const total = cart.reduce((sum,item) => sum + item.price*item.qty,0);
+  document.getElementById("cartTotal").textContent = "المجموع: " + money(total);
+}
+
+function toggleCart() {
+  document.getElementById("cartPanel").classList.toggle("open");
+}
+
+function checkout() {
+  if (!cart.length) {
+    alert("السلة فارغة. أضف منتجاً أولاً.");
+    return;
+  }
+
+  let message = "مرحباً، أريد إرسال طلب من " + CONFIG.name + "\n\n";
+  cart.forEach(item => {
+    message += "• " + item.name +
+      " × " + item.qty + " = " + money(item.price*item.qty) + "\n";
+  });
+
+  const total = cart.reduce((sum,item) => sum + item.price*item.qty,0);
+  message += "\nالمجموع التقريبي: " + money(total);
+  message += "\nيرجى تأكيد التوفر وتكلفة التوصيل.";
+  openWA(message);
+}
+
+document.getElementById("searchInput").addEventListener("input",renderProducts);
+document.getElementById("sortSelect").addEventListener("change",renderProducts);
+
+setContactLinks();
+renderCategories();
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
